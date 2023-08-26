@@ -32,8 +32,8 @@ class Division:
 
 # Product Manager Class
 class ProductManager:
-    # Each product manager has some number of processors under him/her
-    # Each processor has different service rate arroding to its function
+    # Each product manager has some number of processors
+    # Each processor has different service rate according to its function
     def __init__(self, name, num_processors, service_rates):
         self.name = name
         self.num_processors = num_processors
@@ -68,9 +68,11 @@ class ProductManager:
         return avg_wait_times,processing_times,cost
 
 
-# Simulation parameters
+# Simulation parameters 
 arrival_rate = 7.0  # Average arrival rate of tasks per time unit
-service_rates = [0.7, 0.5, 0.9]  # Average service rate per time unit
+service_rates1 = [0.7, 0.5, 0.9]  # Average service rate per time unit
+service_rates2 = [0.5, 1.5, 0.3]  # Average service rate per time unit
+service_rates3 = [1.1, 0.8, 0.6]  # Average service rate per time unit
 num_tasks = 100000  # Number of tasks to simulate
 num_processors = 3  # Number of processors
 
@@ -86,9 +88,9 @@ divisions = {
     "TataMotors": Division("TataMotors", arrival_rate)
 }
 
-rangerover_manager = ProductManager("RangeRover Manager", num_processors, service_rates)
-jaguar_manager = ProductManager("Jaguar Manager", num_processors, service_rates)
-nexon_manager = ProductManager("Nexon Manager", num_processors, service_rates)
+rangerover_manager = ProductManager("RangeRover Manager", num_processors, service_rates1)
+jaguar_manager = ProductManager("Jaguar Manager", num_processors, service_rates2)
+nexon_manager = ProductManager("Nexon Manager", num_processors, service_rates3)
 
 divisions["TataMotors"].add_productmanager(rangerover_manager)
 divisions["TataMotors"].add_productmanager(jaguar_manager)
